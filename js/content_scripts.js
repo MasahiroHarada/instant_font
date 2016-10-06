@@ -27,20 +27,28 @@ const loadFont = fontName => {
   }
 };
 
-const getCurrentFontFamily = object => {
+const getOriginalFontFamily = object => {
   return window.getComputedStyle(object, null).getPropertyValue('font-family');
 };
 
-const switchFont = fontName => {
-  var body = document.getElementsByTagName('body')[0];
-  var currentFont = getCurrentFontFamily(body);
-  body.style.fontFamily = fontName + ", " + currentFont;
+const switchFont = (fontName, elementName) => {
+  const elements = document.getElementsByTagName(elementName);
+  const originalFont = getOriginalFontFamily(elements[0]);
+  const elementsLength = elements.length;
+  for (let i = 0; i < elementsLength; i++) {
+    elements[i].style.fontFamily = fontName + (originalFont ? ", " + originalFont : '');
+  }
 };
+
+const switchTargetElements = ['body', 'h1', 'h2', 'h3', 'h4', 'p'];
+const switchTargetLength = switchTargetElements.length;
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === "SWITCH_FONT" && currentFont !== request.fontName) {
     currentFont = request.fontName;
     loadFont(request.fontName);
-    switchFont(request.fontName);
+    for (let i = 0; i < switchTargetLength; i++) {
+      switchFont(request.fontName, switchTargetElements[i]);
+    }
   }
 });
