@@ -1,15 +1,17 @@
 $font-family: 'Lato', sans-serif;
+$title-font: 'Pacifico', sans-serif;
 $slightly-gray: #eee;
 $light-grey: #DDD;
 $grey: #808c99;
-$primary-color: #DD3975;
-$light-primary-color : #E83C7B;
+$primary-color: #EA0079;
 $text-color: #696969;
+$background-color: #FFF;
 $border-radius: 3px;
-$margin: 20px;
-$container-padding: 8px 16px;
-$input-padding: 4px 8px;
-$btn-padding: 5px 10px;
+$margin: 24px;
+$container-padding: 12px 18px;
+$selectbox-padding: .5em 0;
+$input-padding: .5em .3em;
+$btn-padding: .5em .3em;
 
 * {
   box-sizing: border-box;
@@ -18,8 +20,9 @@ $btn-padding: 5px 10px;
 body {
   min-width: 240px;
   font-family: $font-family;
-  font-size: 14px;
+  font-size: 16px;
   color: $text-color;
+  background-color: $background-color;
 }
 
 .container {
@@ -27,8 +30,9 @@ body {
 }
 
 h1 {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: normal;
+  font-family: $title-font;
   text-align: center;
   color: $primary-color;
   margin: 0;
@@ -41,7 +45,6 @@ h1 {
     color: $grey;
     font-size: 14px;
     display: block;
-    margin-bottom: $margin / 2;
   }
 }
 
@@ -51,11 +54,16 @@ select, input[type=text] {
   font-size: inherit;
   display: block;
   width: 100%;
-  padding: $input-padding;
-  border-radius: $border-radius;
-  border: 1px solid $light-grey;
-  background-color: white;
+  border: none;
+  border-bottom: 1px solid $light-grey;
+  background-color: transparent;
   color: $text-color;
+}
+select {
+  padding: $selectbox-padding;
+}
+input[type=text] {
+  padding: $input-padding;
 }
 
 .buttons {
@@ -69,26 +77,23 @@ select, input[type=text] {
   border-radius: $border-radius;
   padding: $btn-padding;
   cursor: pointer;
-  font-size: 14px;
+  font-size: inherit;
   width: 45%;
+  transition: 0.3s;
   &.btn--primary {
-    background: -webkit-gradient(
-                    linear, left top, left bottom,
-                    from($light-primary-color),
-                    to($primary-color)
-    );
+    background-color: $primary-color;
     color: white;
     border: none;
     &:hover {
-      background: darken($primary-color, 5%);
+      background-color: darken($primary-color, 5%);
     }
   }
   &.btn--flat {
-    background-color: transparent;
+    background: transparent;
     border: none;
     color: $grey;
     &:hover {
-      background-color: $slightly-gray;
+      background: $slightly-gray;
     }
   }
 }
