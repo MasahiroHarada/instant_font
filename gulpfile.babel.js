@@ -19,11 +19,10 @@ const paths = {
   }
 };
 
+// ===================================
+// JavaScript ES2015-2016
+// ===================================
 gulp.task('build', () => {
-
-  // ===================================
-  // JavaScript ES2015-2016
-  // ===================================
   browserify({
     entries: [ `${paths.scripts.src}content_scripts.js` ],
     transform: [ 'babelify' ]
@@ -31,14 +30,23 @@ gulp.task('build', () => {
   .bundle()
   .pipe(source('content_scripts.js'))
   .pipe(gulp.dest(paths.scripts.dist));
+});
 
-  // ===================================
-  // Sass
-  // ===================================
+// ===================================
+// Sass -> CSS
+// ===================================
+gulp.task('sass', () => {
   const processors = [ cssnext() ];
   gulp.src(`${paths.styles.sass}**/*.scss`)
     .pipe(sass())
     .pipe(postcss(processors))
     .pipe(gulp.dest(paths.styles.css));
+});
 
+// ===================================
+// Watch
+// ===================================
+gulp.task('watch', () => {
+  gulp.watch(`${paths.scripts.src}**/*.js`, [ 'build' ]);
+  gulp.watch(`${paths.styles.sass}**/*.scss`, [ 'sass' ]);
 });
