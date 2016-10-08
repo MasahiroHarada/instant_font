@@ -2,12 +2,13 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="container">
     <h1>Font Switcher</h1>
-    <div class="select-area">
+    <div class="input-area">
       <label for="fonts">Font</label>
       <select name="fonts" id="fonts">
         <option value="Open Sans">Open Sans</option>
@@ -795,15 +796,13 @@
         <option value="Meera Inimai">Meera Inimai</option>
       </select>
     </div>
-    <div class="textfield">
+    <div class="input-area">
       <label for="selector">Selector</label>
       <input type="text" id="selector" name="selector" value="body">
     </div>
-    <div class="buttons">
-      <div class="button-area clearfix">
-        <button id="switch-font" class="btn">switch</button>
-        <button id="reset" class="btn btn--flat">reset</button>
-      </div>
+    <div class="buttons float-box">
+      <button id="switch-font" class="btn btn--primary pull-left">Switch</button>
+      <button id="reset" class="btn btn--flat pull-right">Reset</button>
     </div>
   </div>
   <script src="js/popup.js"></script>
