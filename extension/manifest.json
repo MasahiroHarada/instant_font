@@ -1,18 +1,22 @@
 {
   "manifest_version": 2,
-  "name": "Web Font Switcher",
-  "version": "0.1",
+  "name": "Instant Font",
+  "version": "1.0",
 
   "permissions" : [ "tabs" ],
 
-  "description": "This is my first chrome extension.",
+  "description": "Instantly switch the font of current page using Google Fonts.",
+  "icons": {
+    "128": "images/icon128.png"
+  },
+  "author": "Masahiro Harada",
 
   "browser_action": {
     "default_icon": {
       "19": "images/icon19.png",
       "38": "images/icon38.png"
     },
-    "default_title": "Web Font Switcher",
+    "default_title": "Instant Font",
     "default_popup": "popup.html"
   },
 
